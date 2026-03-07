@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* ? theme digunakan untuk mendefinisikan design token; seperti: font, warna, spacing, radius, dll. */
+@theme{ 
+  --font-primary: 'Cal Sans', sans-serif;
+}
+/* ? base digunakan untuk styling dasar html*/
+@layer base{
+  body{
+    font-family: var(--font-primary);
+  }
+}
+/* ? components digunakan untuk reusable components class*/
+/* ? components digunakan untuk utility custom kecil, seperti shadow*/
