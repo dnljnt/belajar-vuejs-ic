@@ -46,10 +46,13 @@
       </div>
 
       <!-- COPYRIGHT -->
+      <div class="mt-10 text-center text-7xl md:text-8xl lg:text-[200px] font-extrabold tracking-wider text-neutral-900">
+        WEAR-IN
+      </div>
       <div
         class="mt-12 pt-6 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500"
       >
-        <p>© 2026 Vuecommerce. All rights reserved.</p>
+        <p>© {{ new Date().getFullYear() }} Wear-in. All rights reserved.</p>
 
         <div class="flex items-center gap-4">
           <a href="#" class="hover:text-black">Indonesia</a>
