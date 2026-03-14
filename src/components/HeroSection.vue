@@ -2,6 +2,7 @@
 import { SparklesIcon } from '@heroicons/vue/24/solid';
 import { ref } from 'vue'
 import CardProduct from './CardProduct.vue';
+import ProductSection from './section/ProductSection.vue';
 const products = ref([
   {
     id: 1,
@@ -37,7 +38,6 @@ const products = ref([
     colors: ['bg-black'],
   },
 ])
-
 const formatPrice = (price) => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -117,4 +117,5 @@ const formatPrice = (price) => {
       </div>
     </div>
   </section>
+  <ProductSection />
 </template>
