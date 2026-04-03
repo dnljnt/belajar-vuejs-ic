@@ -18,7 +18,7 @@ const formattedPrice = computed(() => {
 </script>
 
 <template>
-  <div class="group cursor-pointer">
+  <RouterLink :to="`/product/${product.id}`" class="group cursor-pointer">
     
     <!-- Image Container -->
     <div class="relative bg-[#f4f4f5] rounded-2xl aspect-4/5 overflow-hidden mb-4">
@@ -58,5 +58,5 @@ const formattedPrice = computed(() => {
       </div>
     </div>
 
-  </div>
+  </RouterLink>
 </template>

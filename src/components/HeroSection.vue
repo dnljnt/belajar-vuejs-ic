@@ -2,7 +2,7 @@
 import { SparklesIcon } from '@heroicons/vue/24/solid';
 import { ref } from 'vue'
 import CardProduct from './CardProduct.vue';
-import ProductSection from './section/ProductSection.vue';
+// import ProductSection from './section/ProductSection.vue';
 const products = ref([
   {
     id: 1,
@@ -117,5 +117,5 @@ const formatPrice = (price) => {
       </div>
     </div>
   </section>
-  <ProductSection />
+  <!-- <ProductSection /> -->
 </template>
