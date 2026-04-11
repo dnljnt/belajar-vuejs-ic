@@ -5,6 +5,8 @@ import {
   ShoppingBagIcon,
   Bars3Icon,
 } from '@heroicons/vue/24/outline'
+import { RouterLink } from 'vue-router';
+import { cart } from '@/stores/cart';
 
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
@@ -59,9 +61,12 @@ onMounted(() => {
             <HeartIcon :class="isLightMode ? 'text-neutral-900 group-hover:text-neutral-900' : 'text-white group-hover:text-black'" class="size-5 transition duration-300 cursor-pointer group-hover:scale-110" />
           </button>
 
-          <button class="p-2 hover:bg-gray-100 rounded-full transition duration-300 group">
+          <RouterLink  to="/cart" class="p-2 hover:bg-gray-100 rounded-full transition duration-300 group relative">
             <ShoppingBagIcon :class="isLightMode ? 'text-neutral-900 group-hover:text-neutral-900' : 'text-white group-hover:text-black'" class="size-5 transition duration-300 cursor-pointer group-hover:scale-110" />
-          </button>
+            <span v-if="cart.totalItems" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+              {{ cart.totalItems }}
+            </span>
+          </RouterLink>
 
           <!-- ACTION BUTTON MOBILE -->
           <button class="md:hidden p-2 hover:bg-gray-100 rounded-full group">

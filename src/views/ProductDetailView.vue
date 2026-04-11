@@ -1,6 +1,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { computed, ref } from 'vue'
+import { cart } from '@/stores/cart'
 
 const route = useRoute()
 
@@ -128,7 +129,7 @@ const colors = [
 
           <!-- Aksi (Add to Cart & Wishlist) -->
           <div class="flex gap-4 mb-10">
-            <button class="flex-1 bg-black text-white py-4 px-8 rounded-full font-semibold text-lg hover:scale-[1.02] hover:bg-zinc-800 transition-all duration-300 shadow-xl shadow-black/10">
+            <button @click="cart.add(product)" class="flex-1 bg-black text-white py-4 px-8 rounded-full font-semibold text-lg hover:scale-[1.02] hover:bg-zinc-800 transition-all duration-300 shadow-xl shadow-black/10">
               Add to Cart
             </button>
             <button class="w-16 h-16 flex items-center justify-center border border-gray-300 rounded-full hover:border-black hover:text-black text-gray-400 transition-all duration-300 group">
