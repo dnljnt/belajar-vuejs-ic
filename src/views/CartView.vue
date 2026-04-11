@@ -19,11 +19,13 @@ import { cart } from '@/stores/cart'
 
           <div class="col-span-2">
             <p class="font-semibold">{{ item.name }}</p>
-            <p class="text-sm text-gray-500">IDR {{ item.price }}K</p>
+            <p class="text-sm text-gray-500">IDR {{ cart.formatPrice(item.price) }}K</p>
           </div>
 
           <div class="flex items-center gap-3">
+            <button @click="cart.decrease(item.id)" class="bg-gray-200 text-gray-600 py-1 px-3 rounded-full hover:bg-gray-300">-</button>
             <span>Qty: {{ item.qty }}</span>
+            <button @click="cart.increase(item.id)" class="bg-gray-200 text-gray-600 py-1 px-3 rounded-full hover:bg-gray-300">+</button>
             <button @click="cart.remove(item.id)" class="text-red-500 text-sm">Hapus</button>
           </div>
         </div>
@@ -43,7 +45,7 @@ import { cart } from '@/stores/cart'
 
           <div class="flex justify-between text-gray-500">
             <span>Subtotal</span>
-            <span>IDR {{ cart.totalPrice }}K</span>
+            <span>IDR {{ cart.formatPrice(cart.totalPrice.value) }}K</span>
           </div>
 
           <div class="flex justify-between text-gray-500">
@@ -53,7 +55,7 @@ import { cart } from '@/stores/cart'
 
           <div class="border-t border-gray-100 pt-3 flex justify-between font-semibold text-lg">
             <span>Total</span>
-            <span>IDR {{ cart.totalPrice }}K</span>
+            <span>IDR {{ cart.formatPrice(cart.totalPrice.value) }}K</span>
           </div>
         </div>
 

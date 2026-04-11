@@ -15,10 +15,30 @@ function add(product) {
     state.items.push({ ...product, qty: 1 }) // Belum ada? Push baru
   }
 }
+function decrease(id) {
+  const existing = state.items.find((item) => item.id === id)
+  if(existing){
+    existing.qty-- // Kurangi qty
+    if(existing.qty <= 0) {
+      remove(id) //? Jika qty 0, hapus dari keranjang
+    }
+  }
+}
+
+function increase(id) {
+  const existing = state.items.find((item) => item.id === id)
+  if(existing) {
+    existing.qty++ //? Produk sudah ada? Tambah qty saja
+  }
+}
 
 // Hapus produk dari keranjang
 function remove(id) {
   state.items = state.items.filter((item) => item.id !== id)
+}
+
+function formatPrice(price) {
+  return (price * 1000).toLocaleString('id-ID')
 }
 
 // Hitung total qty semua item
@@ -27,6 +47,7 @@ const totalItems = computed(() => state.items.reduce((sum, item) => sum + item.q
 // Hitung total harga
 const totalPrice = computed(() => state.items.reduce((sum, item) => sum + item.price * item.qty, 0))
 
+
 // Export jadi satu object
 export const cart = {
   state,
@@ -34,4 +55,7 @@ export const cart = {
   remove,
   totalItems,
   totalPrice,
+  decrease,
+  increase,
+  formatPrice
 }
