@@ -4,6 +4,7 @@ import {
   HeartIcon,
   ShoppingBagIcon,
   Bars3Icon,
+  UserIcon,
 } from '@heroicons/vue/24/outline'
 import { RouterLink } from 'vue-router';
 import { cart } from '@/stores/cart';
@@ -66,6 +67,11 @@ onMounted(() => {
             <span v-if="cart.totalItems" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
               {{ cart.totalItems }}
             </span>
+          </RouterLink>
+
+          <!-- ACTION BUTTON -->
+          <RouterLink to="/login" class="p-2 hover:bg-gray-100 rounded-full" title="Masuk">
+            <UserIcon class="w-5 h-5" />
           </RouterLink>
 
           <!-- ACTION BUTTON MOBILE -->
