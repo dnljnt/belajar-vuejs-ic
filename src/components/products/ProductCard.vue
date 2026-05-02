@@ -34,7 +34,7 @@ const formattedPrice = computed(() => {
       <!-- Product Image -->
       <img 
         :src="product.image" 
-        :alt="product.name"
+        :alt="product?.title"
         class="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500 ease-in-out"
       />
     </div>
@@ -42,9 +42,10 @@ const formattedPrice = computed(() => {
     <!-- Product Info -->
     <div class="flex justify-between items-start mt-4">
       <div>
-        <h3 class="font-semibold text-gray-900">{{ product.name }}</h3>
+        <h3 class="font-semibold text-gray-900">{{ product?.title }}</h3>
+         <p class="text-sm text-gray-500 capitalize">{{ product?.category }}</p>
         <div class="flex items-center gap-2 mt-1">
-          <span class="font-bold text-lg">{{ formattedPrice }}</span>
+          <span class="font-bold text-lg">${{ product?.price }}</span>
         </div>
       </div>
       

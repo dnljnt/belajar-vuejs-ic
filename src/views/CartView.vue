@@ -19,8 +19,8 @@ import { RouterLink } from 'vue-router';
           <img :src="item.image" class="w-20 h-20 object-cover rounded" />
 
           <div class="col-span-2">
-            <p class="font-semibold">{{ item.name }}</p>
-            <p class="text-sm text-gray-500">IDR {{ cart.formatPrice(item.price) }}K</p>
+            <p class="font-semibold">{{ item.title }}</p>
+            <p class="text-sm text-gray-500">{{ cart.formatPrice(item.price) }}</p>
           </div>
 
           <div class="flex items-center gap-3">
@@ -46,7 +46,7 @@ import { RouterLink } from 'vue-router';
 
           <div class="flex justify-between text-gray-500">
             <span>Subtotal</span>
-            <span>IDR {{ cart.formatPrice(cart.totalPrice.value) }}K</span>
+            <span> {{ cart.formatPrice(cart.totalPrice.value) }}</span>
           </div>
 
           <div class="flex justify-between text-gray-500">
@@ -56,7 +56,7 @@ import { RouterLink } from 'vue-router';
 
           <div class="border-t border-gray-100 pt-3 flex justify-between font-semibold text-lg">
             <span>Total</span>
-            <span>IDR {{ cart.formatPrice(cart.totalPrice.value) }}K</span>
+            <span> {{ cart.formatPrice(cart.totalPrice.value) }}</span>
           </div>
         </div>
 
