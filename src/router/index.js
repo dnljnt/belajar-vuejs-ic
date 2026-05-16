@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { auth } from '@/stores/auth'
 import HomeView from '../views/HomeView.vue'
 import ProductDetailView from '../views/ProductDetailView.vue'
 import CartView from '@/views/CartView.vue' // Tambahkan ini
@@ -28,11 +28,20 @@ const routes = [
   {
     path: '/checkout',
     component: CheckoutView,
+    meta: { requiresAuth: true },
   },
 ]
+
+
 
 // Buat instance router
 export const router = createRouter({
   history: createWebHistory(),  // Mode history (URL tanpa #)
   routes,                       // Daftar routes kita
+})
+
+router.beforeEach((to) => { // bisa to atau from, tapi biasanya to digunakan untuk mengecek route tujuan sedangkan from untuk mengecek route asal
+  if (to.meta.requiresAuth && !auth.isLoggedIn.value) {
+    return '/login'
+  }
 })

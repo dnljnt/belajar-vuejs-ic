@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { auth } from '@/stores/auth' 
 
 const router = useRouter()
 
@@ -16,21 +17,22 @@ const showPassword = ref(false)
 const errorMessage = ref('')
 
 function handleSubmit() {
-  errorMessage.value = ''
-  // Validasi password
-  if (form.password !== 'password') {
-    errorMessage.value = 'Password salah! Coba lagi.'
-    isSubmitting.value = false
-    return
-  }
-
+  errorMessage.value = ''  // reset error setiap kali submit
   isSubmitting.value = true
-  // Simulasi proses login (delay 1.2 detik)
+
   setTimeout(() => {
+    // Panggil fungsi login dari auth store
+    const success = auth.login(form.email, form.password)
+
+    if (success) {
+      router.push('/')  // login berhasil, redirect ke home
+    } else {
+      // Login gagal, tampilkan pesan error
+      errorMessage.value = 'Email atau password salah. Silakan coba lagi.'
+    }
+
     isSubmitting.value = false
-    alert(`Login berhasil! Selamat datang ${form.email}!`)
-    router.push('/') // redirect ke homepage
-  }, 1200)
+  }, 1000)
 }
 </script>
 

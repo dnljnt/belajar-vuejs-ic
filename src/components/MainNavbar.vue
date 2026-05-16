@@ -5,10 +5,11 @@ import {
   ShoppingBagIcon,
   Bars3Icon,
   UserIcon,
+  ArrowRightStartOnRectangleIcon
 } from '@heroicons/vue/24/outline'
 import { RouterLink } from 'vue-router';
 import { cart } from '@/stores/cart';
-
+import { auth } from '@/stores/auth'
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -70,9 +71,16 @@ onMounted(() => {
           </RouterLink>
 
           <!-- ACTION BUTTON -->
-          <RouterLink to="/login" class="p-2 hover:bg-gray-100 rounded-full" title="Masuk">
+          <RouterLink v-if="!auth.isLoggedIn.value" to="/login"
+            class="p-2 hover:bg-gray-100 rounded-full" title="Masuk">
             <UserIcon class="w-5 h-5" />
           </RouterLink>
+
+          <!-- Jika sudah login: tampilkan tombol keluar -->
+          <button v-else @click="auth.logout()"
+            class="p-2 hover:bg-gray-100 rounded-full" title="Keluar">
+            <ArrowRightStartOnRectangleIcon class="w-5 h-5" />
+          </button>
 
           <!-- ACTION BUTTON MOBILE -->
           <button class="md:hidden p-2 hover:bg-gray-100 rounded-full group">
